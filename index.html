@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CenturyPly Next-Gen Catalog</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Dynamic Background -->
+    <div class="bg-aura"></div>
+
+    <div class="book-stage">
+        <div id="book" class="book">
+            <!-- Pages injected by product-loader.js -->
+        </div>
+    </div>
+
+    <!-- Floating Navigation UI -->
+    <nav class="glass-nav">
+        <div class="page-indicator"><span id="currNum">1</span> / <span id="totalNum">-</span></div>
+        <button id="prevBtn" class="nav-circle" disabled>&#8592;</button>
+        <button id="nextBtn" class="nav-circle">&#8594;</button>
+        <button id="searchBtn" class="icon-btn" title="Search Index">🔍</button>
+        <button id="pdfBtn" class="icon-btn" title="Download PDF">📥</button>
+        <!-- <button id="cartBtn" class="nav-circle"
+            style="background: var(--bg-dark); color: var(--gold); border:1px solid var(--gold);">
+            🛒 <span id="cartCount" class="cart-badge">0</span>
+        </button> -->
+        <button id="musicToggle" class="icon-btn" title="Toggle Ambient Music"
+            style="margin-left: 10px; font-size: 20px;">🎵</button>
+    </nav>
+
+    <!-- Thumbnail Navigation Rail (Mini-map) -->
+    <div id="thumbRail" class="thumb-rail">
+        <!-- Thumbnails injected via JS -->
+    </div>
+
+    <!-- Bulk Order / Multimedia Form Modal -->
+    <div id="bulkOrderModal" class="v2-overlay">
+        <button id="closeBulk"
+            style="position: absolute; top: 40px; right: 40px; background: none; border: none; color: white; font-size: 30px; cursor: pointer;">&times;</button>
+
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--gold); margin-bottom: 30px;">BULK INQUIRY &
+                SAMPLES</h2>
+            <div class="glass-form-container">
+                <input type="text" placeholder="Full Name" class="glass-input">
+                <input type="email" placeholder="Business Email" class="glass-input">
+                <input type="text" placeholder="Project Type" class="glass-input">
+                <textarea placeholder="Tell us about your requirements..." class="glass-input"
+                    style="min-height: 120px;"></textarea>
+                <button id="submitBulk" class="checkout-btn" style="margin-top: 10px;">Send Inquiry</button>
+            </div>
+            <p style="margin-top: 20px; font-size: 11px; opacity: 0.5;">Our design consultants will contact you within
+                24 hours.</p>
+        </div>
+    </div>
+
+    <audio id="ambientAudio" loop src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3"></audio>
+
+    <!-- Cart Drawer -->
+    <!-- <div id="cartDrawer" class="cart-drawer">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 20px;">
+            <h2 style="font-weight: 800; letter-spacing: 2px;">YOUR CART</h2>
+            <button id="closeCart"
+                style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+        </div>
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 800;">
+                <span>TOTAL:</span>
+                <span>₹<span id="cartTotal">0</span></span>
+            </div>
+            <button id="checkoutBtn" class="checkout-btn" style="width: 100%;">Proceed to WhatsApp Order</button>
+        </div>
+    </div> -->
+
+    <!-- Advanced Search/Filter Overlay -->
+    <div id="searchOverlay" class="v2-overlay">
+        <button id="closeSearch"
+            style="position: absolute; top: 40px; right: 40px; background: none; border: none; color: white; font-size: 30px; cursor: pointer;">&times;</button>
+        <input type="text" id="searchInput" class="v2-search-input" placeholder="Search product name or code..."
+            autocomplete="off">
+        <div id="searchResults"
+            style="max-width: 800px; margin: 40px auto; width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; overflow-y: auto;">
+            <!-- Results -->
+        </div>
+    </div>
+
+    <script src="product-loader.js"></script>
+</body>
+
+</html>
